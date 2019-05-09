@@ -1,0 +1,115 @@
+<div id="content">
+<!-- player {{{ -->
+<iframe id="player" src="/games/player/<%= @game.id %>" frameborder="0" scrolling="no" width="423" height="533">Twoja przeglądarka nie obsługuje ramek.</iframe>
+<!-- }}} -->
+<!-- comments {{{ -->
+<% @comments = Comment.find_eager(@game.id) %>
+
+<% if not @comments.empty? %>
+<ul id="comments-navigation">
+  <li><a href="#" onclick="hideFirstComment();return false;" title="Schowaj komentarz"><%= image_tag 'uarrow.png', :border => 0 %></a></li>
+  <li><a href="#" onclick="showAllComments();return false;" title="Pokaż wszystkie komentarze"><%= image_tag 'refresh.png', :border => 0 %></a></li>
+  <li><a href="#" onclick="showLastHiddenComment();return false;" title="Pokaż poprzedni komentarz"><%= image_tag 'darrow.png', :border => 0 %></a></li>
+</ul>
+<% end %>
+
+<div id="game-comments">
+  <%= render :partial => 'comment', :collection => @comments %>
+
+  <% if not user? %>
+    <div>
+      Aby dodać komentarz lub słowa kluczowe musisz się <%= link_to 'zalogować', { :controller => 'games', :action => 'show_and_add_comment', :id => @game.id } %>.
+    </div>
+  <% end %>
+</div>
+
+<% if user? %>
+  <%= loading_indicator "comment-indicator" %>
+  <div id="comment-form">
+    <% form_remote_tag :url => { :action => "add_comment" },
+      :update => "game-comments", 
+      :loading => "Element.show('comment-indicator')",
+      :complete => "Element.hide('comment-indicator');fieldReset('comment');",
+      :html => { :name => 'addCommentForm' } do %>
+      <%= hidden_field_tag 'id', @game.id %>
+      <%= form_plain_textarea 'comment', 'Komentarz:', 5, 10, 1 %>
+
+      <div>
+        <%= submit_tag "Dodaj komentarz", :tabindex => 2 %>
+      </div>
+    <% end %>
+  </div>
+
+  <div id="comment-help">
+    <p>'@X' wstawia link przechodzący do ruchu o numerze X. Makro to działa tylko dla głównego wariantu gry.</p>
+    <p>'#X' wstawia link przechodzący do gry o identyfikatorze X. Identyfikator gry znajduje się w pasku tytułu przeglądarki.</p>
+  </div>
+<% end %>
+
+<%= navigator @game, Game.maximum(:id, :conditions => "id < #{@game.id}"), Game.minimum(:id, :conditions => "id > #{@game.id}") %>
+
+<!-- }}} -->
+</div>
+<!-- sidebar {{{ -->
+<div id="sidebar">
+  <h2>
+    <% if owner? @game %>
+      <img id="edit_description" src="/images/edit.png" title="Kliknij, aby wyedytować"/>
+      <%= my_in_place_editor :game, :description, 'edit_description' %>
+    <% else %>
+      <%=h @game.description %>
+    <% end %>
+  </h2>
+  <span class="meta">Dodał <%= link_to_profile(@game.owner.login) %>, <%=h fmt_date(@game.uploaded_at) %> o <%=h fmt_time(@game.uploaded_at) %>.</span>
+
+  <div id="details">
+    <ul>
+      <li class="even"><span class="title">Goban:</span> <%=h board_size(@game) %></li>
+      <li class="odd"><span class="title">Białe:</span> <%=h white_player_with_rank(@game) %></li>
+      <li class="even"><span class="title">Czarne:</span> <%=h black_player_with_rank(@game) %></li>
+      <li class="odd"><span class="title">Komi:</span> <%=h sgf_komi(@game) %></li>
+      <li class="even"><span class="title">Wynik:</span> <%= sgf_result_with_icons(@game) %></li>
+
+      <% if not (sgf_handicap @game).eql? "?" %>
+        <li class="odd"><span class="title">Handicap:</span> <%=h sgf_handicap(@game) %></li>
+      <% end %>
+    </ul>
+    <ul>
+      <li class="even"><span class="title">Osadź:</span> <input id="embed" type="text" onfocus="this.select();" value="<%=h "<iframe id=\"player\" src=\"http://baduk.pl/games/embed/#{ @game.id }\" frameborder=\"0\" width=\"423\" height=\"553\">Twoja przeglądarka nie obsługuje ramek.</iframe>" %>"/></li>
+      <% if owner? @game %>
+        <li class="odd"><span class="title">Usuń:</span> 
+        <%= link_to image_tag("delete.gif", :border => 0), 
+          { :controller => 'games', :action => 'delete', :id => @game.id }, 
+          :confirm => 'Po usunięciu gry, wszystkie komentarze staną się bezużyteczne. Jeśli ta gra mogłaby być wartościowa dla innych graczy, prosimy o rozwagę. Czy na pewno chcesz usunąć grę?' %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <%= button_to 'Zapisz grę na dysku...', { :controller => "games", :action => "download", :id => @game } %>
+
+  <h3>Słowa kluczowe:</h3>
+  <ul id="game-tags">
+    <% if @game.tag_list.empty? %>
+      <span class="meta">Brak</span>
+    <% else %>
+      <%= render :partial => 'tag', :collection => @game.tag_list, :locals => { :game => @game } %>
+    <% end %>
+  </ul>
+
+  <% if user? %>
+    <%= loading_indicator "tag-indicator" %>
+    <div id="tag-form">
+      <% form_remote_tag :url => { :action => "add_tag" },
+        :update => "game-tags",
+        :loading => "Element.show('tag-indicator')",
+        :complete => "Element.hide('tag-indicator');fieldReset('ta_gs');" do %>
+        <%= hidden_field_tag 'id', @game.id %>
+        <%= text_field_with_auto_complete :ta, :gs, { :value => 'Dodaj nowe...', :size => 30, :tabindex => 3, :onclick => "document.getElementById('ta_gs').value = ''; return true;" }, { :tokens => ',', :min_chars => 2 } %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= ads @game %>
+</div>
+<!-- }}} -->
+

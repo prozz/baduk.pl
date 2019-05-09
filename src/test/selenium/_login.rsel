@@ -1,0 +1,7 @@
+open "/login"
+
+type "user_login", login
+type "user_password", password
+click_and_wait "link=Zaloguj!"
+
+include_partial 'header_while_logged_in', :login => "prozz"

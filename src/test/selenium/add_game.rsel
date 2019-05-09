@@ -1,0 +1,21 @@
+include_partial 'setup'
+include_partial 'login', :login => 'prozz', :password => 'dobre haslo'
+
+click_and_wait "link=Dodaj"
+verify_title "baduk.pl - Nowa gra"
+
+# type "sgf", "/home/prozz/Fisz+Marek+2.sgf"
+
+assert_element_present "game_description"
+assert_element_present "ta_gs"
+
+click "link=Dodaj grę!"
+pause 3000
+verify_text_present "Plik nie jest w formacie SGF"
+verify_text_present "Podaj opis"
+
+type "game_description", "New game of nonames"
+click "link=Dodaj grę!"
+pause 3000
+verify_text_present "Plik nie jest w formacie SGF"
+verify_text_not_present "Podaj opis"

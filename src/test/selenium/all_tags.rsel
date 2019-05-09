@@ -1,0 +1,13 @@
+open '/games'
+
+click_and_wait 'link=Zobacz wszystkie'
+assert_title 'baduk.pl - Słowa kluczowe'
+verify_text_present 'Słowa kluczowe'
+
+open '/games/show/1'
+include_partial 'tag_game'
+
+open '/games/tags'
+assert_title 'baduk.pl - Słowa kluczowe'
+assert_element_present 'link=pro game'
+

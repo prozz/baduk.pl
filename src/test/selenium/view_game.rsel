@@ -1,0 +1,20 @@
+include_partial 'setup'
+include_partial 'login', :login => 'prozz', :password => 'dobre haslo'
+
+open '/games/show/2'
+
+verify_title "baduk.pl - Honinbo Shusai vs Kitani Minoru"
+
+assert_element_present "player"
+
+verify_text_present "Honinbo Shusai vs Kitani Minoru"
+verify_text_present "Dodał prozz, 12/09/2007 o 19:25. "
+
+assert_element_present "link=Zapisz grę na dysku..."
+assert_element_present "link=Dodaj komentarz"
+verify_text_present "Słowa kluczowe:"
+verify_text_present "Brak"
+verify_value "tag", "Dodaj nowe..."
+
+include_partial 'tag_game'
+include_partial 'add_comment'

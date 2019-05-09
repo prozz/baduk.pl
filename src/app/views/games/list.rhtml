@@ -1,0 +1,28 @@
+<div id="games">
+
+<h2>Archiwum: <%= @title_suffix %></h2>
+
+<% if @games.empty? %>
+  <p>Niestety nic tu nie ma.</p>
+<% else %>
+
+  <% for game in @games %>
+  
+    <div class="game <%= odd_or_even @games.index(game) %>">
+      <h4 class="title"><%=link_to h(game.description), :action => 'show', :id => game %></h4>
+      <span class="added">dodał <%= link_to_profile game.owner.login %>, <%=h fmt_date(game.uploaded_at) %> o <%=h fmt_time(game.uploaded_at) %> </span>
+      <div class="info">
+        <span class="desc"><%= game_details(game) %></span>
+        <span class="actions">
+          <%= link_to "Przejrzyj", :action => 'show', :id => game %>
+          <%= link_to "Pobierz", :action => 'download', :id => game %>
+        </span>
+      </div>
+    </div>
+  
+  <% end %>
+
+  <%= will_paginate @games %>
+
+<% end %>
+</div>

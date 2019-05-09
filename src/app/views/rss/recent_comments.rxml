@@ -1,0 +1,22 @@
+xml.instruct! :xml, :version=>"1.0" 
+xml.rss(:version=>"2.0") {
+  xml.channel{
+    xml.title("baduk.pl - Komentarze")
+    xml.link("http://baduk.pl/")
+    xml.description("Archiwum gier")
+    xml.language('pl-PL')
+      for comment in @comments
+        if not comment.game.nil?
+        xml.item do
+          xml.title("##{comment.game.id} - #{comment.game.description}")
+          xml.description(comment_long_desc(comment))
+          xml.author(comment.author.login)
+          xml.pubDate(comment.created_at)
+          xml.link(url_for(:controller => 'games', :action => 'show', :id => comment.game.id, :anchor => comment.id, :only_path => false))
+          xml.guid(comment.id)
+        end
+        end
+      end
+  }
+}
+

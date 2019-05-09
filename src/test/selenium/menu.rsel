@@ -1,0 +1,16 @@
+
+include_partial 'setup'
+
+open '/games'
+
+assert_title 'baduk.pl - Archiwum gier'
+
+assert_element_present 'link=Archiwum'
+assert_element_not_present 'link=Moje gry'
+assert_element_not_present 'link=Dodaj'
+
+include_partial 'login', :login => 'prozz', :password => 'dobre haslo'
+
+assert_element_present 'link=Archiwum'
+assert_element_present 'link=Moje gry'
+assert_element_present 'link=Dodaj'

@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta name="keywords" content="go, baduk, igo, weiqi, boardgame, play, goban, gra, planszowa, stones, kamienie"/>
+    <%= stylesheet_link_tag "styles" %>
+    <%= javascript_include_tag :defaults  %>
+    <title>baduk.pl</title>
+  </head>
+  <body>
+    
+    <div id="page">
+      
+      <div id="content">
+        <div id="header">
+          <%= render :file => 'header' %>
+        </div>
+        
+        <div id="main">
+          <%= yield  %>
+        </div>
+        
+        <div id="footer">
+          <%= render :file => 'footer' %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

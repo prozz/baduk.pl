@@ -1,0 +1,5 @@
+<h3>Gra została dodana do naszego archiwum.</h3>
+<ul>
+  <li><%= link_to_remote 'Dodaj jeszcze jedną', :update => "new-game-form", :url => { :action => "new_game_form" } %></li>
+  <li><%= link_to 'Przejrzyj dodaną grę', :action => "show", :id => @game.id %></li>
+</ul>

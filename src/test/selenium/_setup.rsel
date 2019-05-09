@@ -1,0 +1,16 @@
+delete_cookie "localhost", "_session_id" 
+delete_cookie "localhost", "_baduk_session_id" 
+
+#IO::popen ('D:\pgRails\bin\rake.bat tmp:clear', 'r') { |p|
+#  puts p.inspect
+#}
+
+# windows
+#`D:/pgRails/bin/rake.bat tmp:clear`
+
+# linux 
+`rake tmp:clear`
+
+setup :fixtures => :all, :clear_tables => "taggings,tags,comments"
+verify_text_present "The session is wiped clean."
+

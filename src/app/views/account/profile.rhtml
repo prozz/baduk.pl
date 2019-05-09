@@ -1,0 +1,59 @@
+<div id="profile">
+
+<% if @user_not_found %>
+	<h2>Nie mamy takiego użytkownika.</h2>
+<% else %>
+
+	<h2>Profil użytkownika '<%=h @user.login %>'</h2>
+
+	<% if @recent_games.empty? %>
+		<p><%=h @user.login %> nie dodał(a) jeszcze żadnych gier.</p>
+	<% else %>
+		<p>Ostatnio dodane gry:</p>
+
+		<ul class="recent_games">
+		<% for game in @recent_games %>
+		        <li>
+
+
+    <div class="game <%= odd_or_even @recent_games.index(game) %>">
+      <h4 class="title"><%=link_to h(game.description), :controller => 'games', :action => 'show', :id => game %></h4>
+      <span class="added">dodano <%=h fmt_date(game.uploaded_at) %> o <%=h fmt_time(game.uploaded_at) %> </span>
+      <div class="info">
+        <span class="desc"><%= game_details(game) %></span>
+        <span class="actions">
+          <%= link_to "Przejrzyj", :controller => 'games', :action => 'show', :id => game %>
+          <%= link_to "Pobierz", :controller => 'games', :action => 'download', :id => game %>
+        </span>
+      </div>
+    </div>
+				
+			</li>
+		<% end %>
+		</ul>
+		<%= link_to_user_games @user.login, 'Pokaż wszystkie...'%>
+	<% end %>
+
+	<% if @recent_comments.empty? %>
+		<p><%=h @user.login %> nie dodał(a) jeszcze żadnych komentarzy.</p>
+	<% else %>
+	 	<p>Ostatnie komentarze:</p>
+		<ul class="recent_comments">
+     	 	<% for comment in @recent_comments %>
+		        <li>
+                          <span class="game_details">
+                          <% if not comment.game.nil? %>
+                            do gry <%= short_game_details comment.game %>:
+                          <% else %>
+                            gra usunięta :(
+                          <% end %>
+                          </span>
+		          <%= link_to comment.comment, { :controller => 'games', :action => 'show', :id => comment.game_id, :anchor => comment.id } %>
+		        </li>
+		<% end %>
+		</ul>	
+	<% end %>
+
+<% end %>
+
+</div>

@@ -1,0 +1,22 @@
+<div id="main">
+  <h2>Rejestracja</h2>
+  <p>
+  Konto jest całkowicie darmowe, a twój adres email nie będzie nikomu udostępniony. 
+  </p>
+
+<% form_tag( { :controller => 'signup' }, :name => 'signup', :onsubmit => 'return true;') do %>
+
+  <fieldset>
+    <%= form_input 'user', 'login', 'Nazwa użytkownika:', 30, 2 %>
+    <%= form_input 'user', 'email', 'Twój adres email:', 30, 3 %>
+    <%= form_password 'user', 'password', 'Hasło: (dłuższe niż 4 znaki)', 30, 4 %>
+    <%= form_password 'user', 'password_confirmation', 'Powtórz hasło:', 30, 5 %>
+  </fieldset>
+  
+  <div class="formButtons">
+    <%= submit_tag 'Zarejestruj!', :tabindex => 6 %>
+  </div>
+
+<% end %>
+
+</div>

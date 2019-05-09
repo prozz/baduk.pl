@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+   <meta name="keywords" content="go, baduk, igo, weiqi, boardgame, play, goban, gra, planszowa, stones, kamienie"/>
+   <link href="styles.css" media="screen" rel="Stylesheet" type="text/css" />
+   <title>baduk.pl - Logowanie</title>
+</head>
+	<body >
+		<div id="header" >
+			<h1><a href="/index">baduk.pl</a></h1>
+			
+			<div id="search">
+				<form action="/games/search" method="get">
+					<img alt="Search:" src="http://gregwolejko.com/wp-content/themes/hemingway_reloaded/images/search.gif"/>
+					<input id="search_pharse" name="search[pharse]" size="20" tabindex="1" type="text" />
+				</form>
+			</div>
+
+			<ul id="menu">
+				<li id="first"><a href="/login">logowanie</a></li>
+				<li><a href="/signup">rejestracja</a></li>
+			</ul>
+		</div>
+		
+
+		<ul id="nav">
+			<li class="first"><a href="/games">Archiwum</a></li>
+			<li><a href="/games">Moje gry</a></li>
+			<li><a href="/games">Dodaj grę</a></li>
+			<li><a href="/games">Profil</a></li>
+		</ul>
+
+		<div id="container">
+        <div id="login">
+          <h2>Logowanie</h2>
+          <p>Jeśli nie posiadasz konta możesz się <a href="">zarejestrować</a>.</p>
+          <form action="/login" method="post">
+            <label for="user_login">Nazwa użytkownika:</label><input id="user_login" name="user[login]" size="30" tabindex="1" type="text"/>
+            <label for="user_password">Hasło:</label><input id="user_password" name="user[password]" size="30" tabindex="2" type="password" />
+            <input name="commit" tabindex="3" type="image" src="zaloguj.png"/> lub kliknij <a href="">tutaj</a> jeśli zapomniałeś hasła. 
+          </form>
+        </div>
+		</div>
+		
+		<div class="clearfix"></div>
+
+		<div id="footer">
+			<div id="footer-content">
+				<div>
+					<h4>Ostatnio dodane:</h4>
+          <ul>
+            <li><a href="">lorem vs ipsum</a>, prozz, 12-12-2007</li>
+            <li><a href="">dolor vs amet</a>, prozz, 12-12-2007</li>
+            <li><a href="">amet vs consecuteur</a>, prozz, 12-12-2007</li>
+            <li><a href="">lorem vs ipsum</a>, prozz, 12-12-2007</li>
+          </ul>
+				</div>
+
+				<div>
+					<h4>Ostatnio komentowane:</h4>
+          <ul>
+            <li><a href="">lorem vs ipsum</a> dodane dziś przez prozz</li>
+            <li><a href="">dolor vs amet</a> dodane dziś przez prozz</li>
+            <li><a href="">amet vs consecuteur</a> dodane wczoraj przez dolor</li>
+            <li><a href="">lorem vs ipsum</a> dodane 2 dni temu przez prozz</li>
+          </ul>
+				</div>
+				
+				<div class="last">
+		<!-- {{{ -->
+		<div id="tag-cloud">
+			<a class="v1" href="">pro</a>
+			<a class="v4" href="">joseki</a>
+			<a class="v11" href="">sabaki</a>
+			<a class="v5" href="">fuseki</a>
+			<a class="v6" href="">changho</a>
+			<a class="v7" href="">chineese fuseki</a>
+			<a class="v8" href="">hoshi</a>
+			<a class="v2" href="">chikun</a>
+			<a class="v8" href="">hoshi</a>
+			<a class="v3" href="">cho</a>
+			<a class="v9" href="">tengen</a>
+			<a class="v10" href="">life&nbsp;&amp;&nbsp;death</a>
+			<a class="v2" href="">chikun</a>
+			<a class="v3" href="">cho</a>
+			<a class="v4" href="">joseki</a>
+			<a class="v11" href="">sabaki</a>
+			<a class="v5" href="">fuseki</a>
+			<a class="v6" href="">changho</a>
+			<a class="v7" href="">chineese fuseki</a>
+			<a class="v8" href="">hoshi</a>
+			<a class="v1" href="">pro</a>
+			<a class="v9" href="">tengen</a>
+			<a class="v1" href="">pro</a>
+			<a class="v2" href="">chikun</a>
+			<a class="v3" href="">cho</a>
+			<a class="v4" href="">joseki</a>
+			<a class="v11" href="">sabaki</a>
+			<a class="v5" href="">fuseki</a>
+			<a class="v6" href="">changho</a>
+			<a class="v7" href="">chineese fuseki</a>
+			<a class="v9" href="">tengen</a>
+		</div>
+		<!-- }}} -->
+				</div>
+			</div>
+
+      <div id="footer-menu">
+				<ul>
+					<li><a href="/about">O nas</a></li>
+					<li><a href="/contact">Kontakt</a></li>
+					<li><a href="/faq">FAQ</a></li>
+					<li><a href="/blog">Blog</a></li>
+        </ul>
+      </div>
+
+		  <div class="clearfix"></div>
+
+			<div id="copyrights">
+				&copy; 2008 by prozz, hosting: <a href="http://www.proadmin.com.pl">ProAdmin</a>
+			</div>
+		</div>
+			
+	</body>
+</html>
+

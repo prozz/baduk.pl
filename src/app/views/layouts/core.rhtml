@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta name="Keywords" content="gra go, go, baduk, igo, weiqi, boardgame, play, goban, gosu, gra, planszowa, stones, kamienie"/>
+    <meta name="Description" content="<%=h @page_description || 'Archiwum gier goistycznych' %>"/>
+    <link rel="shortcut icon" media="screen" href="/images/favicon.ico" type="image/x-icon"/>
+    <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - Najnowsze gry" href="/rss/recent_games"/>
+    <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - Ostatnie komentarze" href="/rss/recent_comments"/>
+    <%= stylesheet_link_tag "styles" %>
+    <%= javascript_include_tag :defaults  %>
+    <title>baduk.pl - <%=h @page_title %></title>
+  </head>
+  <body>
+    <div id="header"><%= render :file => 'header' %></div>
+
+    <div id="container">
+      <%= yield  %>
+    </div>
+
+		<div class="clearfix"></div>
+
+    <div id="footer"><%= render :file => 'footer' %></div>
+  </body>
+</html>

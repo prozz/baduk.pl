@@ -1,0 +1,3 @@
+open '/games/show/666'
+
+verify_text_present 'Nie mogę znaleźć gry.'

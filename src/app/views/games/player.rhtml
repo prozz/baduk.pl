@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>baduk.pl - <%= @page_title %></title>
+    <style type="text/css">
+    body { margin: 0; }
+    .eidogo-player.theme-compact .comment-info { display: none; }
+    .eidogo-player .pass { display: none; }
+    p { margin: 1px; font-family: verdana,sans-serif; font-size: 0.6em; color: gray; float: left; }
+    a { color: black; }
+    </style>
+</head>
+<body>
+    <div id="player-container"></div>
+ 
+    <script type="text/javascript" src="/player/js/all.compressed.js"></script>
+    <script type="text/javascript">
+    (function() {
+    <% if @embed.nil? %>
+        window.top.player = new eidogo.Player({
+    <% else %>
+        window.player = new eidogo.Player({
+    <% end %>
+            container: "player-container",
+            sgfUrl: "/games/download/" + <%= @game.id %>,
+            enableShortcuts: true,
+            theme:          "compact", // "standard" or "compact"
+            showComments:   true,
+            showPlayerInfo: false,
+            showGameInfo:   false,
+            showTools:      false,
+            showOptions:    false,
+            markCurrent:    true,
+            markVariations: true,
+            markNext:       false
+        });
+    })();
+    
+    </script>
+
+    <% if not @embed.nil? and @embed %>
+	<p>Gra pochodzi z serwisu <a href="http://baduk.pl/games/show/<%= @game.id %>" target="new">baduk.pl</a></p>
+    <% end %>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+include_partial 'setup'
+
+open "/login"
+
+include_partial 'header_while_logged_out'
+
+verify_title "baduk.pl - Logowanie"
+assert_element_present "link=przypomnij hasło"
+assert_element_present "link=zarejestrować"
+
+type "user_login", "prozz"
+type "user_password", "zle haslo"
+click_and_wait "link=Zaloguj!"
+verify_text_present "Wprowadzone dane są niepoprawne."
+
+type "user_login", "prozz"
+type "user_password", "dobre haslo"
+click_and_wait "link=Zaloguj!"
+
+include_partial 'header_while_logged_in', :login => "prozz"

@@ -1,0 +1,22 @@
+<div id="main">
+	<h2>Logowanie</h2>
+	<p>Jeśli nie posiadasz konta możesz się <a href="/signup">zarejestrować</a>.</p>
+
+  <% form_tag( { :controller => 'login' }, :name => 'login', :onsubmit => 'return true;') do %>
+
+    <fieldset>
+      <%= form_input 'user', 'login', 'Nazwa użytkownika:', 30, 1 %>
+      <%= form_password 'user', 'password', 'Hasło:', 30, 2 %>
+      <div class="field save_login">
+        <%= label_tag('save_login', 'Zapamiętaj mnie:') %> <%= check_box_tag 'save_login', '1', true, { :tabindex => 3 } %>
+      </div>
+    </fieldset>
+    
+
+    <div class="formButtons">
+      <%= submit_tag 'Zaloguj!', :tabindex => 4 %> lub <a href="/forgotten_password">przypomnij hasło</a>.
+    </div>
+
+  <% end %>
+
+</div>

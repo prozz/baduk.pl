@@ -1,0 +1,4 @@
+assert_element_present "link=baduk.pl"
+assert_element_present "link=logowanie"
+assert_element_present "link=rejestracja"
+assert_element_not_present "link=zmień hasło"

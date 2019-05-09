@@ -1,0 +1,10 @@
+include_partial 'setup'
+include_partial 'login', :login => 'prozz', :password => 'dobre haslo'
+
+include_partial 'header_while_logged_in', :login => "prozz"
+
+click_and_wait "link=wyloguj"
+verify_text_present "Wylogowałeś się.\n\n"
+verify_text_present "Dziękujemy za wizytę i zapraszamy ponownie!"
+
+include_partial 'header_while_logged_out'

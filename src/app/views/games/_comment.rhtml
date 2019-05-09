@@ -1,0 +1,7 @@
+<div id="comment_<%=h comment.id %>" class="hidable_comment">
+  <a name="<%=h comment.id %>"></a>
+  <h4><%= link_to_profile comment.author.login %></h4>
+  <span>dodano <%= fmt_datetime comment.created_at %></span>
+  <p><%= show_comment comment %></p>
+</div>
+

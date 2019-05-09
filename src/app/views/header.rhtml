@@ -1,0 +1,33 @@
+<div class="clearfix">
+
+<h1><a href="http://baduk.pl">baduk.pl</a></h1>
+
+<div id="search">
+  <% form_tag({ :controller => "games", :action => "search" }, :method => :get) do %>
+    <%= image_tag "search.gif" %>
+    <%= form_plain_input 'pharse', '', 20, 1 %>
+  <% end %>
+</div>
+
+<ul id="menu">
+  <% if user? %>
+    <li id="first">zalogowano jako <%= link_to_profile session[:user].login %> 
+    <li><%= link_to 'zmień hasło', :controller => 'account', :action => 'change_password' %></li>
+    <li><a href="/logout">wyloguj</a></li>
+  <% else %>
+    <li id="first"><a href="/login">logowanie</a></li>
+    <li><a href="/signup">rejestracja</a></li>
+  <% end %>
+</ul>
+
+</div>
+
+<ul id="nav">
+  <li class="first"><a href="/games">Archiwum</a></li>
+  <li><a href="/games/tags">Słowa kluczowe</a></li>
+  <% if user? %>
+    <li><%= link_to "Moje gry", :controller => 'games', :action => 'my' %></li>
+    <li><a href="/games/new">Dodaj</a></li>
+    <li class="last"><%# = link_to_profile_with_label "Profil użytkownika #{session[:user].login}", session[:user].login %></li>
+  <% end %>
+</ul>

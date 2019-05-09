@@ -1,0 +1,52 @@
+<div id="footer-content">
+	<div>
+    <a class="rss_title" href="/rss/recent_games">Najnowsze gry:</a>
+    <ul>
+      <% for game in Game.find_recent %>
+        <li>
+          <%= link_to game.description, :controller => 'games', :action => 'show', :id => game.id %> 
+	  <br/>
+	  <span class="game_details"><%= short_game_details game %></span>
+	  <br/>
+	  <span class="small">(<%=h time_ago_in_words game.uploaded_at %>)</span>
+        </li>
+      <% end %>
+    </ul>
+	</div>
+
+	<div>
+    <a class="rss_title" href="/rss/recent_comments">Ostatnie komentarze:</a>
+    <ul>
+      <% for comment in Comment.find_recent %>
+        <li>
+          <%=h comment.author.login %>: <%= link_to cut(comment.comment), { :controller => 'games', :action => 'show', :id => comment.game_id, :anchor => comment.id } %>
+        </li>
+      <% end %>
+    </ul>
+	</div>
+
+	<div class="last">
+    <div id="tag-cloud">
+      <% tag_cloud Game.tag_counts(:limit => 300, :order => 'count desc').shuffle!, %w(tag1 tag2 tag3 tag4 tag5 tag6 tag7 tag8 tag9 tag10 tag11) do |tag, css_class| %>
+        <%= link_to h(tag.name), { :controller => 'games', :action => 'tagged_with', :id => tag.name }, :class => css_class %>
+      <% end %>
+      <br/>
+      <%= link_to 'Zobacz wszystkie', { :controller => 'games', :action => 'tags'}, :class => 'tag1' %>
+	  </div>
+	</div>
+
+</div>
+
+<div id="footer-menu">
+  <ul>
+    <li><a href="/whatsnew">Co nowego?</a></li>
+    <li><a href="/contact">Kontakt</a></li>
+    <li><a href="/faq">FAQ</a></li>
+  </ul>
+</div>
+
+<div class="clearfix"></div>
+
+<div id="copyrights">
+  &copy; 2008, 2009 by prozz. Designed by <a href="mailto:admin@baduk.pl">prozz</a> with great help of <a href="http://gregwolejko.com">Greg</a>. SGF viewer comes from <a href="http://eidogo.com/source">eidogo.com</a>. <a href="/images/SmallGoban.png">Goban</a> icon is licensed under <a href="http://www.gnu.org/licenses/gpl.txt">GNU GPL</a>. 
+</div>

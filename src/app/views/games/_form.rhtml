@@ -1,0 +1,41 @@
+<%= loading_indicator "new-game-indicator" %>
+
+<div id="file-form-div">
+  <% if @game.errors.on(:sgf) %>
+    <%= render :partial => 'file_unrecognized' %>
+  <% else %>
+
+    <% if not @game.sgf.nil? and @game.errors %>
+      <%= render :partial => 'file_uploaded', :locals => { :game => @game } %>
+    <% else %>
+      <%= render :partial => 'file_form' %>
+    <% end %>
+
+  <% end %>
+</div>
+
+<% form_remote_tag(:url => { :action => "create" }, 
+                   :update => "new-game-form",
+                   :loading => "Element.show('new-game-indicator')",
+                   :complete => "Element.hide('new-game-indicator')",
+                   :multipart => true,
+                   :html => { :name => 'addFileForm' } ) do %>
+
+  <fieldset>
+    <div class="fieldDescription">
+      <%= form_input 'game', 'description', 'Opis gry:', 30, 3 %>
+      <p>Opis gry powinien zawierać nazwę turnieju (koniecznie z datą i numerem rundy), a w przypadku gier towarzyskich sugerujemy, by była to nazwa klubu bądź miejsca w którym gra się odbyła. Dobrymi opisami są np. 'Mistrzostwa Polski 2007, runda 3', 'KGSowe potyczki Ksawerego, odcinek 5' lub 'Drabinka Poznańska, sezon 2008'. Prosimy nie umieszczać w opisie nazwisk i pseudonimów graczy, gdyż ta informacja znajduje się bezpośrednio w pliku SGF. </p>
+    </div>
+
+    <div class="fieldDescription">
+      <%= form_autocomplete_textarea :ta, :gs, 'Słowa kluczowe:', 4 %>
+      <p>Słowa kluczowe ułatwiają łatwe wyszukiwanie interesujących nas gier. Dobrymi słowami kluczowymi są np. pseudonimy graczy, użyte fuseki lub nazwa turnieju, na którym odbyła się dodawana gra itp. Przy wpisywaniu kilku słów kluczowych oddziel je przecinkiem.</p>
+    </div>
+  </fieldset>
+
+  <div class="formButtons">
+    <%= submit_tag "Dodaj grę!", :tabindex => 4 %>
+  </div>
+
+<% end %>
+

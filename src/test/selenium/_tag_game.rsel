@@ -1,0 +1,6 @@
+click "tag"
+type "tag", "pro game"
+submit "//div[@id='tag-form']/form"
+pause 3000
+assert_element_present "link=pro game"
+verify_text_not_present "Brak"

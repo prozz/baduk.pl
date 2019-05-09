@@ -1,0 +1,9 @@
+<div id="tags">
+
+<h2>Słowa kluczowe</h2>
+
+<% tag_cloud Game.tag_counts(:order => 'name asc'), %w(wtag1 wtag2 wtag3 wtag4 wtag5 wtag6 wtag7 wtag8 wtag9 wtag10 wtag11) do |tag, css_class| %>
+   <%= link_to h(tag.name), { :controller => 'games', :action => 'tagged_with', :id => h(tag.name) }, :class => css_class %>
+<% end %>
+
+</div>

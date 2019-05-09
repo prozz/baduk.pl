@@ -1,0 +1,14 @@
+<li>
+  <%= link_to h(tag), :controller => 'games', :action => 'tagged_with', :id => tag %>
+
+  <% if user? %>
+    <span title="Kliknij, aby usunąć niepasujące słowo kluczowe">
+      <%= link_to_remote image_tag("detach.png", :size => "10x10", :border => 0),
+       :url => { :action => "remove_tag", :id => game.id, :tag => tag },
+       :update => { :success => "game-tags" },
+       :loading => "Element.show('tag-indicator')",
+       :complete => "Element.hide('tag-indicator')"
+      %>
+    </span>
+  <% end %>
+</li>

@@ -1,0 +1,6 @@
+  <form id="file-form" target="file-frame" action="upload_sgf" enctype="multipart/form-data" method="POST">
+    <label for="sgf">Plik SGF:</label>
+    <input id="sgf" name="sgf" size="30" tabindex="2" type="file" onchange="document.getElementById('file-form').submit();"/>
+  </form>
+
+  <iframe id="file-frame" name="file-frame" style="display: none;"></iframe>

@@ -1,0 +1,10 @@
+open '/games'
+
+assert_element_present "link=Najnowsze gry:"
+assert_element_present "link=Ostatnie komentarze:"
+assert_element_present "link=Zobacz wszystkie"
+assert_element_present "link=Co nowego?"
+assert_element_present "link=Kontakt"
+assert_element_present "link=FAQ"
+assert_element_present "link=Honinbo Shusai vs Kitani Minoru"
+assert_element_present "link=Go Seigen vs Takagawa Shukaku"

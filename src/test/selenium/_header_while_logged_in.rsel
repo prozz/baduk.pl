@@ -1,0 +1,5 @@
+assert_element_present "link=baduk.pl"
+assert_element_present "link=#{login}"
+assert_element_present "link=wyloguj"
+assert_element_present "link=zmień hasło"
+verify_text_present "zalogowano jako #{login}"

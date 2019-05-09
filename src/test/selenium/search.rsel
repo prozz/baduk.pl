@@ -1,0 +1,23 @@
+open '/games/show/1'
+
+assert_element_present "pharse"
+
+# not existing pharse
+type 'pharse', '666'
+submit_and_wait "//div[@id='search']/form"
+verify_text_present 'Niestety nic tu nie ma.'
+
+# empty pharse
+submit_and_wait "//div[@id='search']/form"
+verify_text_present 'Archiwum: Wszystkie'
+
+assert_title 'baduk.pl - Archiwum gier'
+verify_text_present "19x19, Go Seigen (9d) vs Takagawa Shukaku (8d), B+0.5"
+verify_text_present "19x19, Honinbo Shusai (Meijin) vs Kitani Minoru (7d), B+5"
+
+type 'pharse', 'Go Seigen'
+submit_and_wait "//div[@id='search']/form"
+verify_text_present "Archiwum: 'Go Seigen'"
+verify_text_present "19x19, Go Seigen (9d) vs Takagawa Shukaku (8d), B+0.5"
+verify_text_not_present "19x19, Honinbo Shusai (Meijin) vs Kitani Minoru (7d), B+5"
+

@@ -1,0 +1,6 @@
+assert_element_present "comment"
+type "comment", "this is new comment"
+click "link=Dodaj komentarz"
+pause 3000
+verify_text_present "this is new comment"
+

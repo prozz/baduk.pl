@@ -1,0 +1,19 @@
+xml.instruct! :xml, :version=>"1.0" 
+xml.rss(:version=>"2.0") {
+  xml.channel{
+    xml.title("baduk.pl - Gry")
+    xml.link("http://baduk.pl/")
+    xml.description("Archiwum gier")
+    xml.language('pl-PL')
+      for game in @games
+        xml.item do
+          xml.title("##{game.id} - #{game.description}")
+          xml.description(game_details(game))
+          xml.author(game.owner.login)               
+          xml.pubDate(game.uploaded_at)
+          xml.link(url_for(:controller => 'games', :action => 'show', :id => game.id, :only_path => false))
+          xml.guid(game.id)
+        end
+      end
+  }
+}

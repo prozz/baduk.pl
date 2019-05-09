@@ -1,0 +1,3 @@
+open '/profile/666'
+
+verify_text_present 'Nie mamy takiego użytkownika.'

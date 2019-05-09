@@ -1,0 +1,52 @@
+<div id="main">
+  
+<h1>III Memoriał im. Wojtka Grygorowicza</h1>
+
+<p>
+Chcielibyśmy serdecznie zaprosić na turniej do Poznania.
+Odbędzie się on 23 lutego na terenie Politechniki Poznańskiej.
+</p>
+
+<p>
+Grać będziemy w grupach, 4 rundy z handicapem. Czas na gracza 40min + 20s byo.
+Start pierwszej rundy o 10:00. Zapisy do godziny 9:45.
+</p>
+
+<p>
+Wpisowe 7zł, juniorzy 1zł.
+</p>
+
+<p>
+Dla najlepszych z każdej grupy nagrody książkowe. 
+Fundatorami nagród są wydawnictwo 
+<a href="http://www.wydawnictwo.hanami.pl/">Hanami</a> - wydawca 
+tradycyjnej japońskiej gry karcianej <a href="http://hanafuda.pl">Hanafuda</a> oraz sklep 
+<a href="http://www.e-go.pl/sklep/">e-go.pl</a>.
+</p>
+
+<p>
+Gramy w Domu Studenckim nr 6, przy Św. Rocha/Serafitek. Sala 
+konferencyjna po lewej na wprost od wejścia.
+</p>
+
+<h3>Dojazd:</h3>
+<p>
+Po wyjściu z dworca PKP dojść do Mostu Dworcowego i wsiąść w 
+tramwaj nr 6 (kierunek Miłostowo), 11 (kierunek Osiedla Lecha) 
+lub 12 (kierunek Starołęka).
+Wysiąść na przystanku Serfitek. Dalej skręcić w lewo w ulicę Serafitek.
+Iść prosto do wysokiego akademika (mijając budynek telewizji).
+</p>
+
+<h3>Dotychczas zapisali się i potwierdzili swoją obecność:</h3>
+<ol>
+<% for player in @players %>
+  <li><%=h player.name %> <%=h player.surname %>, <%=h player.rank %></li>
+<% end %>
+</ol>
+
+<div id="registration">
+  <%= render :partial => 'form' %>
+</div>
+
+</div>

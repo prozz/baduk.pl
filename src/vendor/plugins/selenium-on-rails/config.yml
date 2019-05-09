@@ -1,0 +1,18 @@
+environments:
+  - test
+browsers:
+  # Windows
+#  firefox: 'c:\Program Files\Mozilla Firefox\firefox.exe'
+  firefox: '/home/prozz/firefox/firefox'
+#  ie: 'c:\Program Files\Internet Explorer\iexplore.exe'
+
+#host: 'localhost'
+#port_start: 3000
+#port_end: 3005
+#base_url_path: '/'
+#max_browser_duration: 120
+#multi_window: false
+  
+#result_dir: 'c:\result' # the directory where the results will be stored after a test:acceptance run
+result_dir: '/home/prozz/baduk-test-results'
+

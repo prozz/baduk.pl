@@ -1,0 +1,26 @@
+include_partial 'setup'
+
+open "/signup"
+include_partial 'header_while_logged_out'
+
+verify_title "baduk.pl - Rejestracja"
+
+type "user_login", "prozz"
+type "user_email", "asdf@asdf.pl"
+type "user_password", "xyz"
+type "user_password_confirmation", "xyz"
+click_and_wait "link=Zarejestruj!"
+verify_text_present "Hasło jest za krótkie."
+verify_text_present "Nazwa użytkownika jest zajęta."
+
+type "user_login", "kuba"
+type "user_email", "prozz@baduk.pl"
+type "user_password", "dlugie haslo"
+type "user_password_confirmation", "dlugie haslo"
+click_and_wait "link=Zarejestruj!"
+verify_text_present "Założono już konto z tym adresem email."
+
+type "user_email", "kuba@baduk.pl"
+click_and_wait "link=Zarejestruj!"
+
+include_partial 'header_while_logged_in', :login => 'kuba'

@@ -1,0 +1,29 @@
+<h1>Zapisz się!</h1>
+
+<p>
+Jeśli zamierzasz przyjechać na turniej, wypełnij 
+proszę poniższy formularz. Pomoże on nam przewidzieć 
+frekwencję i ułatwi organizację imprezy. Jeśli 
+zrezygnujesz z udziału w memoriale, będziesz 
+mógł się w dowolnym momencie wypisać.</p>
+
+<div id="loading-indicator" style="display: none; float: right;">
+  <%= image_tag 'ajax-loader.gif' %>
+</div>
+
+<div id="registration-form">
+  <% form_remote_tag :url => { :action => "register" },
+    :update => "registration", 
+    :loading => "Element.show('loading-indicator')",
+    :complete => "Element.hide('loading-indicator')" do %>
+    <fieldset>
+      <%= form_select 'player', 'rank', 'Ranking:', 1, @ranks, @player.rank %>
+      <%= form_input 'player', 'name', 'Imię:', 28, 2 %>
+      <%= form_input 'player', 'surname', 'Nazwisko:', 28, 3 %>
+      <%= form_input 'player', 'email', 'Email:', 28, 4 %>
+    </fieldset>
+    <div>
+        <%= submit_tag "Wyślij", :tabindex => 5 %>
+    </div>
+  <% end %>
+</div>

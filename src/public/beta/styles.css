@@ -1,0 +1,300 @@
+.clearfix {
+	overflow: hidden;
+	clear: both;
+}
+
+.formError {
+background-image:url(/images/error.png);
+background-repeat:no-repeat;
+color:red;
+display:inline;
+margin-left:5px;
+padding-left:18px;
+}
+/*
+form {
+padding-bottom:9px;
+padding-left:12px;
+padding-top:2px;
+}
+*/
+input[type="submit"] {
+margin-top:9px;
+}
+select, input[type="text"], input[type="password"], input[type="file"] {
+background:#F8F8F8 none repeat scroll 0%;
+border:1px solid #CCCCCC;
+padding:2px;
+}
+select:hover, input[type="text"]:hover, input[type="password"]:hover, input[type="file"]:hover {
+border-color:#AAAAAA;
+}
+select:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="file"]:focus {
+border-color:#AAAAAA;
+outline-color:#FFCC00;
+outline-style:solid;
+outline-width:1px;
+}
+/*
+input, select {
+cursor:pointer;
+}
+input[type="text"] {
+cursor:text;
+}
+.fieldWithErrors {
+display:inline;
+}
+*/
+
+* {
+	font-family: verdana,sans-serif;
+	margin: 0pt;
+	padding: 0pt;
+}
+
+body {
+}
+/* header {{{ */
+#header {
+	width: 900px;
+	margin: 15px auto 5px auto;
+	background-color: white;
+	clear: both;
+	overflow: hidden;
+}
+#header h1 {
+	float: left;
+}
+
+#header h1 a {
+	color: black;
+	font-size:1.2em;
+	font-weight:bold;
+	letter-spacing: 0.9pt;
+	text-decoration: none;
+}
+
+#menu {
+  font-size: 0.7em;
+	color: gray;
+	float: right;
+	list-style: none;
+}
+#menu li {
+	margin-top: 13px;
+	margin-left: 15px;
+	float: left;
+}
+
+#menu a {
+	color:gray;
+}
+
+#search {
+	float: right;
+	margin-left: 17px;
+}
+
+#search input {
+	font-size: 0.7em;
+	margin-top: 10px;
+	padding: 2px;
+	width:175px;
+	display: inline;
+}
+/* }}} */
+/* menu {{{ */
+#nav {
+	width: 900px;
+	margin: 5px auto 15px auto;
+	overflow: hidden;
+	clear: both;
+	color: gray;
+	list-style: none;
+	padding-top: 6px;
+	padding-bottom: 6px;
+	border-bottom: 1px solid gray;
+}
+#nav li.first {
+	margin-left: 0px;
+}
+#nav li {
+	float: left;
+}
+#nav a {
+	color: gray;
+	padding: 3px 35px 6px 3px;
+	text-decoration: none;
+}
+#nav a:hover {
+	background-color: #ffcc00;
+	color: black;
+}
+/* }}} */
+
+#container {
+	width: 900px;
+	padding-left: 15px;
+	margin: 0 auto;
+}
+
+
+#content {
+	float: left;
+	width: 70%;
+}
+
+#sidebar {
+	float: right;
+	width: 30%;
+}
+
+#container h2 {
+	margin-top: 13px;
+	margin-bottom: 3px;
+	font-size: 1.1em;
+}
+
+#container h3 {
+	margin-top: 3px;
+	margin-bottom: 3px;
+	font-size: 0.9em;
+}
+
+#container form {
+	margin-top: 15px;
+}
+
+#container input {
+	display: block;
+}
+
+#container input[type='image'] {
+	display: inline;
+  padding-top: 15px;
+}
+
+#container label {
+  display: block;
+  font-size: 0.6em;
+  line-height: 1.6;
+  text-transform: uppercase;
+}
+
+#login {
+  padding: 30px 0px 30px 180px;
+}
+
+#login input[type='text'], input[type='password'], label{
+/*  margin-left: 60px;*/
+}
+
+#login label {
+  margin-top: 9px;
+}
+#tag-cloud {
+	text-align: center;
+}
+
+#tag-cloud a {
+/*	font-weight: bold; */
+	text-decoration: none;
+}
+
+#footer div#tag-cloud a:hover {
+  color: white;
+  background-color: #888888;
+}
+/* old, for white background
+#tag-cloud a.v1  { font-size: 84%;  color: rgb(185, 185, 185); }
+#tag-cloud a.v2  { font-size: 89%;  color: rgb(166, 166, 166); }
+#tag-cloud a.v3  { font-size: 94%;  color: rgb(148, 148, 148); }
+#tag-cloud a.v4  { font-size: 99%;  color: rgb(129, 129, 129); }
+#tag-cloud a.v5  { font-size: 104%; color: rgb(111, 111, 111); }
+#tag-cloud a.v6  { font-size: 109%; color: rgb( 92,  92,  92); }
+#tag-cloud a.v7  { font-size: 114%; color: rgb( 74,  74,  74); }
+#tag-cloud a.v8  { font-size: 118%; color: rgb( 55,  55,  55); }
+#tag-cloud a.v9  { font-size: 123%; color: rgb( 37,  37,  37); }
+#tag-cloud a.v10 { font-size: 143%; color: rgb( 18,  18,  18); }
+#tag-cloud a.v11 { font-size: 148%; color: rgb(  0,   0,   0); }
+*/
+#tag-cloud a.v1  { font-size: 84%;  color: rgb( 70,  70,  70); }
+#tag-cloud a.v2  { font-size: 89%;  color: rgb( 74,  74,  74); }
+#tag-cloud a.v3  { font-size: 94%;  color: rgb( 92,  92,  92); }
+#tag-cloud a.v4  { font-size: 99%;  color: rgb(111, 111, 111); }
+#tag-cloud a.v5  { font-size: 104%; color: rgb(129, 129, 129); }
+#tag-cloud a.v6  { font-size: 109%; color: rgb(148, 148, 148); }
+#tag-cloud a.v7  { font-size: 114%; color: rgb(166, 166, 166); }
+#tag-cloud a.v8  { font-size: 118%; color: rgb(185, 185, 185); }
+#tag-cloud a.v9  { font-size: 123%; color: rgb(200, 200, 200); }
+#tag-cloud a.v10 { font-size: 143%; color: rgb(230, 230, 230); }
+#tag-cloud a.v11 { font-size: 148%; color: rgb(250, 250, 250); }
+
+#footer {
+	color: white;
+	font-size: 0.8em;
+	margin-top: 20px;
+	padding: 20px;
+	background: #222222 none repeat scroll 0%;
+	clear: both;
+	overflow: hidden;
+}
+#footer ul {
+	list-style: none;
+	margin-right: 0.8em;
+	padding-top: 3px;
+	float: left;
+	
+}
+#footer li {
+	margin-bottom: 5px;
+}
+#footer-content {
+	background:#2D2D2D none repeat scroll 0%;
+	padding: 20px;
+	margin: 0 auto;
+	text-align: left;
+	clear: both;
+	overflow: hidden;
+	width: 900px;
+	color: #888888;
+}
+#footer-content h4 {
+  background-image: url(rss.png);
+  background-repeat: no-repeat;
+	font-weight: bold;
+	padding-left: 15px;
+}
+#footer-content a {
+	color: white;
+}
+#footer-content div {
+	float: left;
+	width: 300px;	
+}
+#footer-content div.last {
+}
+
+#footer-menu {
+	margin: 0 auto;
+	width: 940px;
+}
+#footer-menu a {
+	color: white;
+}
+#footer-menu li {
+  padding-right: 5px;
+  float: left;
+}
+#copyrights {
+	font-size: 0.7em;
+	padding-top: 2px;
+	margin: 0 auto;
+	color: #888888;
+	width: 940px;
+}
+
+#copyrights a {
+	color: #888888;
+}
